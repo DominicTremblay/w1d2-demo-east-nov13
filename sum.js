@@ -17,32 +17,39 @@ if (args.length < 2) {
   process.exit();
 }
 
-// accumulator
-let total = 0;
+const sum = function (numbers) {
+  // accumulator
+  let total = 0;
 
-// iterate through the args
-for (let i = 0; i < args.length; i++) {
-  // add the args together to have the sum
-  // converting to a number => typecasting into a number
+  // iterate through the args
+  for (let i = 0; i < numbers.length; i++) {
+    // add the args together to have the sum
+    // converting to a number => typecasting into a number
 
-  if (Number.isInteger(Number(args[i]))) {
-    total += Number(args[i]); // => total = total + args[i]
-  }
-  // Edge case: if we don't have number => output error message
-  if (isNaN(args[i])) {
-    console.error('Please, input only numbers!');
-    // stop the execution here
-    process.exit();
+    const convertedNum = Number(numbers[i]);
+
+    if (Number.isInteger(convertedNum)) {
+      total += convertedNum; // => total = total + args[i]
+    }
+    // Edge case: if we don't have number => output error message
+    if (isNaN(convertedNum)) {
+      console.error('Please, input only numbers!');
+      // stop the execution here
+      process.exit();
+    }
   }
 
   // Edge case: Make sure that all arguments are numbers. Remove any none integer.
 
-  console.log('args:', args[i], 'type:', typeof args[i], 'total:', total);
-}
+  // console.log('args:', args[i], 'type:', typeof args[i], 'total:', total);
+  return total;
+};
 
 // for (let arg of args) {
 //   console.log('arg:', arg);
 // }
 
-// print out the sum
-console.log('Total:', total);
+
+const result = sum(args);
+
+console.log(result)
